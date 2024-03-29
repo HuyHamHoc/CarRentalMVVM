@@ -26,7 +26,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.SplashActivity"
-            android:theme="@style/Theme.App.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
