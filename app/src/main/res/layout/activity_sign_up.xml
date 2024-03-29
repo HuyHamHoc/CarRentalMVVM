@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SignInActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="102dp"
+                android:fontFamily="@font/imprima_regular"
+                android:text="Sign Up"
+                android:textColor="@color/black"
+                android:textSize="48sp" />
+
+            <TextView
+
+                android:layout_width="58sp"
+                android:layout_height="4dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_divide" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="131dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="82dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="FULL NAME"
+                    android:textColor="@color/dark_teal"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edtFullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvName"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="39dp"
+                    android:hint="Lorem Ipsum"/>
+
+
+                <TextView
+                    android:id="@+id/tvUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edtFullname"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="EMAIL OR PHONE"
+                    android:textColor="@color/dark_teal"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvUsername"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="39dp"
+                    android:hint="Loremipsum@gmail.com" />
+
+
+                <TextView
+                    android:id="@+id/tvPassword"
+                    android:layout_width="131dp"
+                    android:layout_height="18dp"
+                    android:layout_below="@+id/edtUsername"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="PASSWORD"
+                    android:textColor="@color/dark_teal"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPassword"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="39dp"
+                    android:inputType="textPassword"
+                    android:paddingEnd="20dp" />
+
+                <ImageView
+                    android:id="@+id/imageViewEye"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:layout_below="@+id/tvPassword"
+                    android:layout_marginStart="300dp"
+                    android:src="@drawable/ic_eye" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/btnLogin"
+                android:layout_width="349dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/bg_dark_teal_button"
+                android:fontFamily="@font/inter_medium"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:text="@string/log_in"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="201dp"
+                    android:layout_height="17dp"
+                    android:layout_marginStart="25dp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Have an account Already?" />
+
+                <TextView
+                    android:id="@+id/txtSignin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="80dp"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="SIGN IN"
+                    android:textColor="@color/golden_rod"
+                    android:textStyle="italic" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
