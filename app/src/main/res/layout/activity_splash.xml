@@ -7,30 +7,27 @@
     tools:context=".activity.SplashActivity">
 
     <ImageView
-        android:id="@+id/imgView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_splash"
-        tools:layout_editor_absoluteX="-74dp"
-        tools:layout_editor_absoluteY="-147dp" />
+        android:src="@drawable/bg_splash" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="400dp" />
+        app:layout_constraintGuide_begin="182dp" />
 
     <TextView
         android:id="@+id/tvT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="150dp"
         android:fontFamily="@font/iceberg_regular"
         android:text="T"
         android:textColor="@color/white"
-        android:textSize="120sp"
+        android:textSize="50sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -41,7 +38,7 @@
         android:fontFamily="@font/iceberg_regular"
         android:text="I"
         android:textColor="@color/dark_teal"
-        android:textSize="120sp"
+        android:textSize="50sp"
         app:layout_constraintStart_toEndOf="@+id/tvT"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -52,7 +49,7 @@
         android:fontFamily="@font/iceberg_regular"
         android:text="I"
         android:textColor="@color/dark_teal"
-        android:textSize="120sp"
+        android:textSize="50sp"
         app:layout_constraintStart_toEndOf="@+id/tvI1"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -63,7 +60,7 @@
         android:fontFamily="@font/iceberg_regular"
         android:text="R"
         android:textColor="@color/white"
-        android:textSize="120sp"
+        android:textSize="50sp"
         app:layout_constraintStart_toEndOf="@id/tvI2"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -73,9 +70,52 @@
         android:fontFamily="@font/iceberg_regular"
         android:text="A"
         android:textColor="@color/white"
-        android:textSize="120sp"
+        android:textSize="50sp"
         app:layout_constraintStart_toEndOf="@id/tvR"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="145dp"
+            android:layout_height="8dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="450dp"
+            android:background="@color/dark_teal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/hind_medium"
+            android:text="Rent your dream car from the Best Company "
+            android:textAlignment="center"
+            android:textColor="@color/white_creamy"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/btnGet"
+            android:fontFamily="@font/inconsolata_condensed_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_dark_salmon_button"
+            android:drawableEnd="@drawable/ic_navigate_next"
+            android:paddingBottom="14dp"
+            android:paddingStart="60dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="64dp"
+            android:text="Get Started"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
