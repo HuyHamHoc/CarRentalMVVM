@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.SignInActivity">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -89,6 +88,7 @@
 
                     <ImageView
                         android:id="@+id/imageViewEye"
+                        android:layout_marginTop="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="32dp"
                         android:layout_marginStart="300dp"
@@ -106,7 +106,6 @@
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/forgot_password"
                 android:textSize="11sp" />
-
 
             <TextView
                 android:id="@+id/btnLogin"
