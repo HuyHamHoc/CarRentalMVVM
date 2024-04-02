@@ -61,8 +61,6 @@ class SignUpActivity : AppCompatActivity() {
                     binding.edtUsername.error = "Chỉ có thể chứa chữ cái và số"
                 } else if (userInput.length !in 8..20) {
                     binding.edtUsername.error = "Phải dài 8-20 ký tự"
-//                }else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(userInput).matches()) {
-//                    binding.edtUsername.error = "Email không hợp lệ"
                 } else {
                     binding.edtUsername.error = null // Clear error if username is valid
                 }
@@ -96,19 +94,15 @@ class SignUpActivity : AppCompatActivity() {
 
 
         binding.imageViewEye.setOnClickListener {
-            // Toggle password visibility
             val editTextPassword = binding.edtPassword
             val inputType = editTextPassword.inputType
 
-            // If the current input type is textPassword, change it to text to show the password
-            // Otherwise, change it back to textPassword to hide the password
             editTextPassword.inputType = if (inputType == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
                 InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             } else {
                 InputType.TYPE_TEXT_VARIATION_PASSWORD
             }
 
-            // Move the cursor to the end of the text
             editTextPassword.setSelection(editTextPassword.text.length)
         }
     }

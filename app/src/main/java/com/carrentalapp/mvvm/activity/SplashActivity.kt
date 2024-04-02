@@ -1,10 +1,11 @@
 package com.carrentalapp.mvvm.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.WindowManager
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import com.carrentalapp.mvvm.R
 import com.carrentalapp.mvvm.databinding.ActivitySplashBinding
 
@@ -15,8 +16,11 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sideAnimation = AnimationUtils.loadAnimation(this,R.anim.slide)
-        binding.imgView.startAnimation(sideAnimation)
+        supportActionBar?.hide()
+        this.window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        )
 
         Handler().postDelayed({
             startActivity(Intent(this,SplashSecondActivity::class.java))
