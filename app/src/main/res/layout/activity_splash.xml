@@ -11,8 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bgsplash"
-        tools:layout_editor_absoluteX="-74dp"
-        tools:layout_editor_absoluteY="-147dp" />
+        android:src="@drawable/bgsplash"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

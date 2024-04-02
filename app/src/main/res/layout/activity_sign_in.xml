@@ -23,7 +23,7 @@
                 android:layout_marginTop="102dp"
                 android:layout_marginEnd="181dp"
                 android:fontFamily="@font/imprima_regular"
-                android:text="Sign In"
+                android:text="@string/sign_in"
                 android:textColor="@color/black"
                 android:textSize="48sp" />
 
@@ -45,7 +45,7 @@
                     android:layout_marginStart="38dp"
                     android:layout_marginTop="82dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="EMAIL OR PHONE"
+                    android:text="@string/email_or_phone"
                     android:textColor="@color/dark_teal"
                     android:textSize="16sp" />
 
@@ -54,10 +54,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvUsername"
-                    android:layout_marginStart="38dp"
+                    android:layout_marginStart="35dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="39dp"
-                    android:hint="Loremipsum@gmail.com" />
+                    android:hint="@string/loremipsum_gmail_com"
+                    android:minHeight="48dp" />
 
 
                 <TextView
@@ -68,46 +69,50 @@
                     android:layout_marginStart="38dp"
                     android:layout_marginTop="28dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="PASSWORD"
+                    android:text="@string/password"
                     android:textColor="@color/dark_teal"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/edtPassword"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvPassword"
-                    android:layout_marginStart="38dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="39dp"
-                    android:inputType="textPassword"
-                    android:paddingEnd="20dp" />
+                    android:layout_marginTop="200dp">
 
-                <ImageView
-                    android:id="@+id/imageViewEye"
-                    android:layout_width="30dp"
-                    android:layout_height="32dp"
-                    android:layout_below="@+id/tvPassword"
-                    android:layout_marginStart="300dp"
-                    android:src="@drawable/ic_eye" />
+                    <EditText
+                        android:id="@+id/edtPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginEnd="39dp"
+                        android:inputType="textPassword"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/edtPassword"
-                    android:layout_marginStart="42dp"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="Forgot password?"
-                    android:textSize="11sp" />
+                    <ImageView
+                        android:id="@+id/imageViewEye"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="300dp"
+                        android:src="@drawable/ic_eye" />
+                </FrameLayout>
+
+
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/forgot_password"
+                android:textSize="11sp" />
 
 
             <TextView
                 android:id="@+id/btnLogin"
                 android:layout_width="349dp"
                 android:layout_height="55dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/bg_dark_teal_button"
                 android:fontFamily="@font/inter_medium"
@@ -119,7 +124,6 @@
                 android:textSize="20sp" />
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -129,9 +133,9 @@
                 <TextView
                     android:layout_width="201dp"
                     android:layout_height="17dp"
-                    android:layout_marginStart="28dp"
+                    android:layout_marginStart="35dp"
                     android:fontFamily="@font/inter_medium"
-                    android:text="Don’t Have an account yet?" />
+                    android:text="@string/don_t_have_an_account_yet" />
 
                 <TextView
                     android:id="@+id/txtSignup"
@@ -139,7 +143,7 @@
                     android:layout_height="20dp"
                     android:layout_marginStart="80dp"
                     android:fontFamily="@font/inter_medium"
-                    android:text="SIGN UP"
+                    android:text="@string/log_in"
                     android:textColor="@color/golden_rod"
                     android:textStyle="italic" />
             </LinearLayout>
