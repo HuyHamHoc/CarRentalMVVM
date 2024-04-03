@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import com.carrentalapp.mvvm.databinding.ActivitySignUpBinding
+import com.carrentalapp.mvvm.utils.Constants
 import com.carrentalapp.mvvm.utils.togglePasswordVisibility
 
 class SignUpActivity : AppCompatActivity() {
@@ -32,13 +32,13 @@ class SignUpActivity : AppCompatActivity() {
                 val fullName = s.toString().trim()
 
                 if (fullName.isEmpty()) {
-                    binding.edtFullname.error = "Tên không được để trống"
-                } else if (!fullName.matches("[a-zA-Z]+".toRegex())) {
-                    binding.edtFullname.error = "Kí tự được phép [a-zA-Z]"
-                } else if (fullName.length !in 8..20) {
-                    binding.edtFullname.error = "Tên phải dài 8-20 ký tự"
+                    binding.edtFullname.error = "Name cannot be empty"
+                } else if (!fullName.matches(Constants.FULLNAME_ALPHABETIC_REGEX)) {
+                    binding.edtFullname.error = "Only characters from a-z or A-Z are allowed"
+                } else if (!fullName.matches(Constants.USERNAME_LENGTH_REGEX)) {
+                    binding.edtFullname.error = "Name must be 8-20 characters long"
                 } else {
-                    binding.edtFullname.error = null // Clear error if full name is valid
+                    binding.edtFullname.error = null
                 }
             }
         })
@@ -56,13 +56,13 @@ class SignUpActivity : AppCompatActivity() {
                 val userInput = s.toString().trim()
 
                 if (userInput.isEmpty()) {
-                    binding.edtUsername.error = "Không được để trống"
-                } else if (!userInput.matches("[a-zA-Z0-9]+".toRegex())) {
-                    binding.edtUsername.error = "Chỉ có thể chứa chữ cái và số"
-                } else if (userInput.length !in 8..20) {
-                    binding.edtUsername.error = "Phải dài 8-20 ký tự"
+                    binding.edtUsername.error = "Cannot be empty"
+                } else if (!userInput.matches(Constants.USERNAME_REGEX)) {
+                    binding.edtUsername.error = "Can only contain letters and numbers"
+                }else if (!userInput.matches(Constants.USERNAME_LENGTH_REGEX)) {
+                    binding.edtUsername.error = "Must be 8-20 characters long"
                 } else {
-                    binding.edtUsername.error = null // Clear error if username is valid
+                    binding.edtUsername.error = null
                 }
             }
         })
@@ -78,20 +78,18 @@ class SignUpActivity : AppCompatActivity() {
                 val password = s.toString()
 
                 if (password.isEmpty()) {
-                    binding.edtPassword.error = "Mật khẩu không được để trống"
-                } else if (password.contains(Regex("[^a-zA-Z0-9@#&$!]"))) {
-                    binding.edtPassword.error = "Mật khẩu chứa ký tự không hợp lệ"
-                } else if (password.length !in 8..20) {
-                    binding.edtPassword.error = "Mật khẩu phải dài 8-20 ký tự"
-                } else if (!password.contains(Regex("[@#&$!]"))) {
-                    binding.edtPassword.error = "Mật khẩu phải chứa ít nhất một ký tự đặc biệt: @, #, &, \$, !"
+                    binding.edtPassword.error = "Password cannot be empty"
+                } else if (password.contains(Constants.PASSWORD_CONTAINS_SPECIAL_CHARACTERS_REGEX)) {
+                    binding.edtPassword.error = "Password contains invalid characters"
+                } else if (!password.matches(Constants.PASSWORD_LENGTH_REGEX)) {
+                    binding.edtPassword.error = "Password must be 8-20 characters long"
+                } else if (!password.contains(Constants.PASSWORD_SPECIAL_CHARACTERS_REGEX)) {
+                    binding.edtPassword.error = "Password must contain at least one special character: @, #, &, \$, !"
                 } else {
-                    binding.edtPassword.error = null // Clear error if password is valid
+                    binding.edtPassword.error = null
                 }
             }
         })
-
-
 
         binding.imageViewEye.setOnClickListener {
             binding.imageViewEye.togglePasswordVisibility(binding.edtPassword)
