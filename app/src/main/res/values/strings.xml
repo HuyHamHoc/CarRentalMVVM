@@ -11,4 +11,13 @@
     <string name="sign_up">Sign Up</string>
     <string name="don_t_have_an_account_yet">Don’t Have an account yet?</string>
     <string name="forgot_password">Forgot password?</string>
+
+    // validate
+    <string name="username_cannot_empty">Cannot be empty</string>
+    <string name="username_letters_and_numbers">Can only contain letters and numbers</string>
+    <string name="username_between_8_20_characters_long">Must be between 8–20 characters long</string>
+    <string name="password_cannot_empty">Password cannot be empty</string>
+    <string name="password_characters">Password contains invalid characters</string>
+    <string name="password_between_8_20_characters_long">Password must be between 8–20 characters long</string>
+    <string name="password_must_character">Password must contain at least one special character: @, #, &amp;, $, !</string>
 </resources>
