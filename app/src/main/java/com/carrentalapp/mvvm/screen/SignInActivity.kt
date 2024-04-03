@@ -7,11 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.carrentalapp.mvvm.R
 import com.carrentalapp.mvvm.databinding.ActivitySignInBinding
-import com.carrentalapp.mvvm.utils.Constants.PASSWORD_CONTAINS_SPECIAL_CHARACTERS_REGEX
-import com.carrentalapp.mvvm.utils.Constants.PASSWORD_LENGTH_REGEX
-import com.carrentalapp.mvvm.utils.Constants.PASSWORD_SPECIAL_CHARACTERS_REGEX
-import com.carrentalapp.mvvm.utils.Constants.USERNAME_LENGTH_REGEX
-import com.carrentalapp.mvvm.utils.Constants.USERNAME_REGEX
+import com.carrentalapp.mvvm.utils.Constants
 import com.carrentalapp.mvvm.utils.togglePasswordVisibility
 
 
@@ -41,9 +37,9 @@ class SignInActivity : AppCompatActivity() {
 
                 if (userInput.isEmpty()) {
                     binding.edtUsername.error = getString(R.string.username_cannot_empty)
-                } else if (!userInput.matches(USERNAME_REGEX.toRegex())) {
+                } else if (!userInput.matches(Constants.USERNAME_REGEX )) {
                     binding.edtUsername.error = getString(R.string.username_letters_and_numbers)
-                } else if (!userInput.matches(USERNAME_LENGTH_REGEX.toRegex())) {
+                } else if (!userInput.matches(Constants.USERNAME_LENGTH_REGEX)) {
                     binding.edtUsername.error = getString(R.string.username_between_8_20_characters_long)
                 } else {
                     binding.edtUsername.error = null
@@ -63,11 +59,11 @@ class SignInActivity : AppCompatActivity() {
 
                 if (password.isEmpty()) {
                     binding.edtPassword.error = getString(R.string.password_cannot_empty)
-                } else if (!password.matches(PASSWORD_LENGTH_REGEX.toRegex())) {
+                } else if (!password.matches(Constants.PASSWORD_LENGTH_REGEX)) {
                     binding.edtPassword.error = getString(R.string.password_between_8_20_characters_long)
-                } else if (!password.contains(Regex(PASSWORD_SPECIAL_CHARACTERS_REGEX))) {
+                } else if (!password.contains(Constants.PASSWORD_SPECIAL_CHARACTERS_REGEX)) {
                     binding.edtPassword.error = getString(R.string.password_must_character)
-                } else if (password.contains(Regex(PASSWORD_CONTAINS_SPECIAL_CHARACTERS_REGEX))) {
+                } else if (password.contains(Constants.PASSWORD_CONTAINS_SPECIAL_CHARACTERS_REGEX)) {
                     binding.edtPassword.error = getString(R.string.password_characters)
                 } else {
                     binding.edtPassword.error = null
