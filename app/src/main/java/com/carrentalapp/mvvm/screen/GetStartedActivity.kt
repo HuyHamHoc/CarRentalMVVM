@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.WindowManager.LayoutParams
 import com.carrentalapp.mvvm.databinding.ActivitySplashSecondBinding
 
-class SplashSecondActivity : AppCompatActivity() {
+class GetStartedActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashSecondBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
