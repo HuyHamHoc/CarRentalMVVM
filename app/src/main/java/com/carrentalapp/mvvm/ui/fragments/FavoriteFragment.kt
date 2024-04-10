@@ -1,11 +1,14 @@
 package com.carrentalapp.mvvm.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.carrentalapp.mvvm.MainActivity
+import com.carrentalapp.mvvm.R
 import com.carrentalapp.mvvm.adapter.CarsFavoritesAdapter
 import com.carrentalapp.mvvm.databinding.FragmentFavoriteBinding
 import com.carrentalapp.mvvm.model.Cars
@@ -30,7 +33,6 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
 
-
         val cars = List(100) { index ->
             Cars(
                 name = "TOYOTA", price = 300
@@ -52,3 +54,4 @@ class FavoriteFragment : Fragment() {
         }
     }
 }
+
