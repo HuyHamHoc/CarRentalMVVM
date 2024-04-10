@@ -1,6 +1,7 @@
 package com.carrentalapp.mvvm.ui.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.carrentalapp.mvvm.adapter.CarsAdapter
 import com.carrentalapp.mvvm.databinding.FragmentHomeBinding
 import com.carrentalapp.mvvm.model.Cars
+import com.carrentalapp.mvvm.ui.SearchActivity
 
 
 class HomeFragment : Fragment() {
@@ -31,6 +33,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+
+        binding.btnSearch.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+        }
 
         val cars = List(100) { index ->
             Cars(
