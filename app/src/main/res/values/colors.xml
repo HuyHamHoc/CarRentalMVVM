@@ -9,5 +9,12 @@
     <color name="dark_salmon">#C64949</color>
     <color name="golden_rod">#FCC21B</color>
     <color name="white_creamy">#F5F6F6CF</color>
+    <color name="white_light">#FFFFFF</color>
+    <color name="light_gray">#F6F6F6</color>
+    <color name="rosy_brown">#CCBDBD</color>
+    <color name="pale_taupe">#988080 </color>
+    <color name="deep_jungle_greenl">#200D0D0E</color>
+    <color name="light_grayish_cyan">#BECEDA</color>
+    <color name="light_silver">#C8C8C8</color>
 
 </resources>

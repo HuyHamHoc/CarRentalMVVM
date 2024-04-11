@@ -1,4 +1,4 @@
-package com.carrentalapp.mvvm.screen
+package com.carrentalapp.mvvm.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

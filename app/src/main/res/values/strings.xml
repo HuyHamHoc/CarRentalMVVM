@@ -20,4 +20,9 @@
     <string name="password_characters">Password contains invalid characters</string>
     <string name="password_between_8_20_characters_long">Password must be between 8–20 characters long</string>
     <string name="password_must_character">Password must contain at least one special character: @, #, &amp;, $, !</string>
+    <string name="family_cars">family cars</string>
+    <string name="cheap_cars">Cheap cars</string>
+    <string name="luxuly_cars">Luxuly cars</string>
+    <string name="cars_available_near_you">Cars Available Near You</string>
+    <string name="view_more">View more</string>
 </resources>
