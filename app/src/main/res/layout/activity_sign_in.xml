@@ -44,7 +44,7 @@
                     android:layout_marginStart="38dp"
                     android:layout_marginTop="82dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="@string/email_or_phone"
+                    android:text="@string/username"
                     android:textColor="@color/dark_teal"
                     android:textSize="16sp" />
 
@@ -54,10 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvUsername"
                     android:layout_marginStart="35dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="39dp"
-                    android:hint="@string/loremipsum_gmail_com"
-                    android:minHeight="48dp" />
+                    android:layout_marginEnd="39dp"/>
 
 
                 <TextView
@@ -83,8 +80,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="35dp"
                         android:layout_marginEnd="39dp"
-                        android:inputType="textPassword"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        android:inputType="textPassword"/>
 
                     <ImageView
                         android:id="@+id/imageViewEye"
@@ -117,7 +113,7 @@
                 android:fontFamily="@font/inter_medium"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
-                android:text="@string/log_in"
+                android:text="@string/submit"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -142,7 +138,7 @@
                     android:layout_height="20dp"
                     android:layout_marginStart="80dp"
                     android:fontFamily="@font/inter_medium"
-                    android:text="@string/log_in"
+                    android:text="@string/sign_up"
                     android:textColor="@color/golden_rod"
                     android:textStyle="italic" />
             </LinearLayout>

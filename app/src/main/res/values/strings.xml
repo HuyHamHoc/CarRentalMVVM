@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">CarRentalMVVM</string>
-    <string name="log_in">Log In</string>
+    <string name="submit">Submit</string>
     <string name="sign_in">SIGN IN</string>
     <string name="have_an_account_already">Have an account Already?</string>
     <string name="password">PASSWORD</string>
     <string name="loremipsum_gmail_com">Loremipsum@gmail.com</string>
-    <string name="email_or_phone">EMAIL OR PHONE</string>
+    <string name="username">USERNAME</string>
     <string name="lorem_ipsum">Lorem Ipsum</string>
     <string name="full_name">FULL NAME</string>
     <string name="sign_up">Sign Up</string>
