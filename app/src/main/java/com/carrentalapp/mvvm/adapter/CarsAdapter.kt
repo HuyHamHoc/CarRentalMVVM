@@ -1,16 +1,12 @@
 package com.carrentalapp.mvvm.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.carrentalapp.mvvm.R
-import com.carrentalapp.mvvm.databinding.CarsFavoritesItemLayoutBinding
+import com.carrentalapp.mvvm.data.model.Cars
 import com.carrentalapp.mvvm.databinding.CarsItemLayoutBinding
-import com.carrentalapp.mvvm.model.Cars
 
-class CarsAdapter : RecyclerView.Adapter<CarsAdapter.VH>() {
+open class CarsAdapter : RecyclerView.Adapter<CarsAdapter.VH>() {
 
     private var cars: List<Cars> = emptyList()
 
