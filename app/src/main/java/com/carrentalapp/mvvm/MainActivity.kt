@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.carrentalapp.mvvm.databinding.ActivityMainBinding
-import com.carrentalapp.mvvm.ui.fragments.FavoriteFragment
-import com.carrentalapp.mvvm.ui.fragments.HomeFragment
-import com.carrentalapp.mvvm.ui.fragments.NotificationFragment
-import com.carrentalapp.mvvm.ui.fragments.PersonFragment
+import com.carrentalapp.mvvm.ui.favorite.FavoriteFragment
+import com.carrentalapp.mvvm.ui.home.HomeFragment
+import com.carrentalapp.mvvm.ui.notification.NotificationFragment
+import com.carrentalapp.mvvm.ui.person.PersonFragment
 
 
 class MainActivity : AppCompatActivity() {
