@@ -91,17 +91,17 @@ class SignInActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
             if (binding.edtUsername.text.isEmpty() || binding.edtPassword.text.isEmpty()) {
-                Toast.makeText(this, "Please Enter Your Username and Password", Toast.LENGTH_SHORT)
+                Toast.makeText(this, getString(R.string.please_enter), Toast.LENGTH_SHORT)
                     .show()
             } else {
                 if (binding.edtUsername.text.toString() == "huydeptrai" && binding.edtPassword.text.toString() == "huydeptrai123@") {
-                    Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.login_successful), Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this@SignInActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
                 }
             }
         }
