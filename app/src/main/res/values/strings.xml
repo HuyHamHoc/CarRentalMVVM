@@ -25,4 +25,8 @@
     <string name="luxuly_cars">Luxuly cars</string>
     <string name="cars_available_near_you">Cars Available Near You</string>
     <string name="view_more">View more</string>
+    <string name="please_enter">Please enter your username and password</string>
+    <string name="login_successful">Login successful</string>
+    <string name="login_failed">Login failed</string>
+
 </resources>
