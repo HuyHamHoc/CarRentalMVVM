@@ -1,7 +1,6 @@
 package com.carrentalapp.mvvm.data.model
 
-class User(
-    val id : Int,
-    val username : String,
+data class LoginResponse(
+    val userName : String,
     val password : String
 )
