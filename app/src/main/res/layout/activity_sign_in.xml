@@ -80,7 +80,7 @@
                 android:layout_marginEnd="38dp"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
-                android:maxLength="40"
+                android:maxLength="20"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvPassword"

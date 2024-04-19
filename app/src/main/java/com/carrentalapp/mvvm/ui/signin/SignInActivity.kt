@@ -5,22 +5,71 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
 import com.carrentalapp.mvvm.MainActivity
 import com.carrentalapp.mvvm.R
+import com.carrentalapp.mvvm.data.datasource.RetrofitHelper.loginService
+import com.carrentalapp.mvvm.data.model.LoginResponse
 import com.carrentalapp.mvvm.databinding.ActivitySignInBinding
 import com.carrentalapp.mvvm.ui.signup.SignUpActivity
 import com.carrentalapp.mvvm.utils.Constants
 import com.carrentalapp.mvvm.utils.togglePasswordVisibility
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
+    private var mListUser: ArrayList<LoginResponse> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getListUser()
+
+        binding.btnLogin.setOnClickListener {
+            clickLogin()
+        }
+    }
+
+    private fun clickLogin() {
+        if (mListUser.isEmpty()) {
+            return
+        }
+
+        var isHasUser = false
+        for (user in mListUser) {
+            if ((binding.edtUsername.text.toString() == user.userName) && (binding.edtPassword.text.toString() == user.password)
+            ) {
+                isHasUser = true
+                break
+            }
+        }
+        if (isHasUser) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun getListUser() {
+        loginService.login().enqueue(
+            object : Callback<List<LoginResponse>> {
+                override fun onResponse(
+                    call: Call<List<LoginResponse>>,
+                    response: Response<List<LoginResponse>>
+                ) {
+                    if (response.isSuccessful) {
+                        response.body()?.let {
+                            mListUser.addAll(it)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<List<LoginResponse>>, t: Throwable) {
+                }
+            }
+        )
 
         binding.txtSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
@@ -88,22 +137,5 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
         })
-
-        binding.btnLogin.setOnClickListener {
-            if (binding.edtUsername.text.isEmpty() || binding.edtPassword.text.isEmpty()) {
-                Toast.makeText(this, getString(R.string.please_enter), Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                if (binding.edtUsername.text.toString() == "huydeptrai" && binding.edtPassword.text.toString() == "huydeptrai123@") {
-                    Toast.makeText(this, getString(R.string.login_successful), Toast.LENGTH_SHORT).show()
-
-                    val intent = Intent(this@SignInActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
     }
 }
