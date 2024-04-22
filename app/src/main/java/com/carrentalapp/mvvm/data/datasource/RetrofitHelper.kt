@@ -1,6 +1,7 @@
 package com.carrentalapp.mvvm.data.datasource
 
-import com.carrentalapp.mvvm.data.repository.ILoginService
+import com.carrentalapp.mvvm.data.repository.ISignInService
+import com.carrentalapp.mvvm.data.repository.ISignUpService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,7 +17,12 @@ object RetrofitHelper {
             .build()
     }
 
-    val loginService: ILoginService by lazy {
-        retrofit.create(ILoginService::class.java)
+    val signInService: ISignInService by lazy {
+        retrofit.create(ISignInService::class.java)
     }
+
+    val signUpService: ISignUpService by lazy {
+        retrofit.create(ISignUpService::class.java)
+    }
+
 }
