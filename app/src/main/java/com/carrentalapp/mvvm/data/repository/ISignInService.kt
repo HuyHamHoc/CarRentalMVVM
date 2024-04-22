@@ -4,9 +4,9 @@ import com.carrentalapp.mvvm.data.model.LoginResponse
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface ILoginService {
+interface ISignInService {
 
     @GET("customer")
-    fun login(): Call<List<LoginResponse>>
+    fun signIn(): Call<List<LoginResponse>>
 
 }

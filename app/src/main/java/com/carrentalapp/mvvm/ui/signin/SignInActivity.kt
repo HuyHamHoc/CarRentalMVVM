@@ -7,7 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.carrentalapp.mvvm.MainActivity
 import com.carrentalapp.mvvm.R
-import com.carrentalapp.mvvm.data.datasource.RetrofitHelper.loginService
+import com.carrentalapp.mvvm.data.datasource.RetrofitHelper.signInService
 import com.carrentalapp.mvvm.data.model.LoginResponse
 import com.carrentalapp.mvvm.databinding.ActivitySignInBinding
 import com.carrentalapp.mvvm.ui.signup.SignUpActivity
@@ -53,7 +53,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun getListUser() {
-        loginService.login().enqueue(
+        signInService.signIn().enqueue(
             object : Callback<List<LoginResponse>> {
                 override fun onResponse(
                     call: Call<List<LoginResponse>>,

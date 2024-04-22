@@ -100,6 +100,7 @@
                 app:layout_constraintStart_toStartOf="@id/edtUsername"
                 app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
 
+
             <EditText
                 android:id="@+id/edtPassword"
                 android:layout_width="0dp"
@@ -107,13 +108,13 @@
                 android:layout_marginEnd="38dp"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
-                android:maxLength="40"
+                android:maxLength="20"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/tvPassword"
                 app:layout_constraintTop_toBottomOf="@+id/tvPassword"
                 tools:ignore="LabelFor,SpeakableTextPresentCheck" />
-
 
             <ImageView
                 android:id="@+id/imageViewEye"
