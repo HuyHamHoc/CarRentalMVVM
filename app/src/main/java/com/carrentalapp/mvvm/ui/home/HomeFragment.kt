@@ -1,6 +1,7 @@
 package com.carrentalapp.mvvm.ui.home
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.carrentalapp.mvvm.adapter.CarsListAdapter
 import com.carrentalapp.mvvm.data.model.CarsList
 import com.carrentalapp.mvvm.databinding.FragmentHomeBinding
+import com.carrentalapp.mvvm.ui.detail.DetailActivity
 
 
 class HomeFragment : Fragment() {
@@ -41,8 +43,17 @@ class HomeFragment : Fragment() {
 
         viewModel.loadCars()
         observerLiveData()
+        onClickDetailCars()
     }
 
+    private fun onClickDetailCars() {
+        adapterCarsList.itemClickCars = { cars ->
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("yourKey",cars.id)
+            }
+            context?.startActivity(intent)
+        }
+    }
 
     private fun observerLiveData() {
         viewModel.observerCarsListLiveData().observe(viewLifecycleOwner) { carsLists ->
