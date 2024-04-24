@@ -10,6 +10,7 @@ import com.carrentalapp.mvvm.databinding.CarsItemLayoutBinding
 
 class CarsListAdapter : RecyclerView.Adapter<CarsListAdapter.ViewHolder>() {
     private var carsList = ArrayList<CarsList>()
+    var itemClickCars : ((CarsList) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -30,6 +31,10 @@ class CarsListAdapter : RecyclerView.Adapter<CarsListAdapter.ViewHolder>() {
         holder.binding.txtName.text = carsList[position].name
         holder.binding.txtPrice.text = "$${carsList[position].price}"
         Glide.with(holder.itemView).load(carsList[position].picture).into(holder.binding.imgCar)
+
+        holder.itemView.setOnClickListener {
+            itemClickCars!!.invoke(carsList[position] )
+        }
     }
 
     class ViewHolder(val binding: CarsItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.DetailActivity">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,64 +18,65 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.viewpager2.widget.ViewPager2
+                <ImageView
+                    android:id="@+id/imgCarDetail"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:background="@drawable/bg_light_blue" />
+                    android:layout_height="300dp"
+                    android:background="@drawable/bg_light_blue"
+                    android:importantForAccessibility="no"
+                    tools:ignore="ImageContrastCheck" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="57dp"
-                    android:src="@drawable/ic_next" />
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_next"
+                    tools:ignore="ImageContrastCheck" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="320dp"
                     android:layout_marginTop="57dp"
-                    android:src="@drawable/ic_menu_horizontal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="100dp"
-                    android:fontFamily="@font/imprima_regular"
-                    android:text="TIIRA"
-                    android:textColor="#70FFFFFF"
-                    android:textSize="160sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="140dp"
-                    android:src="@drawable/rangerover" />
-
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_menu_horizontal"
+                    tools:ignore="ImageContrastCheck" />
             </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="26dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="Range Rover"
-                    android:textSize="16sp" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="200dp"
-                    android:fontFamily="@font/ptsans_regular"
-                    android:text="$200/day"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvCarsName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:textColor="@color/dark_salmon"
+                        android:id="@+id/tvPriceDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="50dp"
+                        android:fontFamily="@font/ptsans_regular"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -110,15 +110,16 @@
                                 android:layout_marginBottom="50dp"
                                 android:fontFamily="@font/ptsans_regular"
                                 android:gravity="center"
-                                android:text="Transition"
-                                android:textColor="@color/light_blue" />
+                                android:text="@string/transition"
+                                android:textColor="@color/light_blue"
+                                tools:ignore="TextContrastCheck" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/ptsans_regular"
                                 android:gravity="center"
-                                android:text="Automatic"
+                                android:text="@string/automatic"
                                 android:textColor="@color/black"
                                 android:textSize="12sp" />
                         </androidx.cardview.widget.CardView>
@@ -135,15 +136,16 @@
                                 android:layout_marginBottom="50dp"
                                 android:fontFamily="@font/ptsans_regular"
                                 android:gravity="center"
-                                android:text="Transition"
-                                android:textColor="@color/light_blue" />
+                                android:text="Speed"
+                                android:textColor="@color/light_blue"
+                                tools:ignore="HardcodedText,TextContrastCheck" />
 
                             <TextView
+                                android:id="@+id/tvSpeed"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/ptsans_regular"
                                 android:gravity="center"
-                                android:text="200kmph"
                                 android:textColor="@color/black"
                                 android:textSize="12sp" />
 
@@ -161,15 +163,16 @@
                                 android:layout_marginBottom="50dp"
                                 android:fontFamily="@font/ptsans_regular"
                                 android:gravity="center"
-                                android:text="Seats"
-                                android:textColor="@color/light_blue" />
+                                android:text="@string/seats"
+                                android:textColor="@color/light_blue"
+                                tools:ignore="TextContrastCheck" />
 
                             <TextView
+                                android:id="@+id/tvSeat"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/ptsans_regular"
                                 android:gravity="center"
-                                android:text="4 seats"
                                 android:textColor="@color/black"
                                 android:textSize="12sp" />
                         </androidx.cardview.widget.CardView>
@@ -183,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
                 android:layout_marginTop="30dp"
-                android:text="RENDER" />
+                android:text="@string/render" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -195,28 +198,31 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="21dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_chat" />
+                    android:src="@drawable/ic_chat"
+                    android:importantForAccessibility="no" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Lorem Ipsum" />
+                    android:text="@string/lorem_ipsum" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="120dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_message" />
+                    android:src="@drawable/ic_message"
+                    android:importantForAccessibility="no" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="21dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_phone" />
+                    android:src="@drawable/ic_phone"
+                    android:importantForAccessibility="no" />
             </LinearLayout>
 
             <LinearLayout
@@ -234,8 +240,10 @@
                     android:layout_marginStart="21dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/ic_circle"
+                    android:importantForAccessibility="no"
                     android:padding="15dp"
-                    android:src="@drawable/ic_plus" />
+                    android:src="@drawable/ic_plus"
+                    tools:ignore="ImageContrastCheck" />
 
                 <TextView
                     android:id="@+id/txtQuantity"
@@ -246,7 +254,8 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="0"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/btnReduce"
@@ -255,8 +264,10 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/ic_circle"
+                    android:importantForAccessibility="no"
                     android:padding="15dp"
-                    android:src="@drawable/ic_minus" />
+                    android:src="@drawable/ic_minus"
+                    tools:ignore="ImageContrastCheck" />
 
                 <TextView
                     android:layout_width="180dp"
@@ -265,7 +276,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_black_button"
                     android:gravity="center"
-                    android:text="BOOK NOW"
+                    android:text="@string/book_now"
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>

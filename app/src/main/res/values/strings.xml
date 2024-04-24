@@ -29,5 +29,10 @@
     <string name="login_successful">Login successful</string>
     <string name="login_failed">Login failed</string>
     <string name="day">/day</string>
+    <string name="transition">Transition</string>
+    <string name="automatic">Automatic</string>
+    <string name="seats">Seats</string>
+    <string name="render">RENDER</string>
+    <string name="book_now">BOOK NOW</string>
 
 </resources>
