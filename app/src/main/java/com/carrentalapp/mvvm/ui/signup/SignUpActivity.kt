@@ -24,7 +24,6 @@ class SignUpActivity : AppCompatActivity() {
     private var isUsernameValid = false
     private var isPasswordValid = false
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
