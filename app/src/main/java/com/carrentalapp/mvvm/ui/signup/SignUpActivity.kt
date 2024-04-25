@@ -35,9 +35,6 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnSubmit.isEnabled = true
-
-
         binding.btnSubmit.setOnClickListener {
             val fullName = binding.edtFullname.text.toString()
             val userName = binding.edtUsername.text.toString()
