@@ -26,7 +26,9 @@
     <string name="cars_available_near_you">Cars Available Near You</string>
     <string name="view_more">View more</string>
     <string name="please_enter">Please enter your username and password</string>
-    <string name="login_successful">Login successful</string>
+    <string name="register_successful">Register successful</string>
+    <string name="username_already">Username already exists</string>
+    <string name="is_empty">Please fill in all fields</string>
     <string name="login_failed">Login failed</string>
     <string name="day">/day</string>
     <string name="transition">Transition</string>

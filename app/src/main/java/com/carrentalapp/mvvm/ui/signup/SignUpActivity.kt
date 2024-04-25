@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
 import com.carrentalapp.mvvm.R
 import com.carrentalapp.mvvm.data.datasource.RetrofitHelper
+import com.carrentalapp.mvvm.data.model.LoginResponse
 import com.carrentalapp.mvvm.data.model.SignUpRequest
 import com.carrentalapp.mvvm.databinding.ActivitySignUpBinding
 import com.carrentalapp.mvvm.ui.signin.SignInActivity
@@ -33,14 +35,19 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnLogin.isEnabled = false
+        binding.btnSubmit.isEnabled = true
 
 
-        binding.btnLogin.setOnClickListener {
+        binding.btnSubmit.setOnClickListener {
             val fullName = binding.edtFullname.text.toString()
             val userName = binding.edtUsername.text.toString()
             val password = binding.edtPassword.text.toString()
-            signUpUser(fullName, userName, password)
+
+            if (fullName.isNotBlank() && userName.isNotBlank() && password.isNotBlank() ) {
+                signUpUser(fullName, userName, password)
+            } else {
+                showToast(getString(R.string.is_empty))
+            }
         }
 
 
@@ -61,7 +68,8 @@ class SignUpActivity : AppCompatActivity() {
                     binding.edtFullname.error = getString(R.string.full_name_error)
                     isFullNameValid = false
                 } else if (!fullName.matches(Constants.USERNAME_LENGTH_REGEX)) {
-                    binding.edtFullname.error = getString(R.string.full_name_error)
+                    binding.edtFullname.error =
+                        getString(R.string.username_between_8_20_characters_long)
                     isFullNameValid = false
                 } else {
                     binding.edtFullname.error = null
@@ -104,6 +112,7 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -135,28 +144,57 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+
     private fun signUpUser(fullName: String, userName: String, password: String) {
+            // Kiểm tra trạng thái hợp lệ của tên, tên người dùng và mật khẩu
+            if (isFullNameValid && isUsernameValid && isPasswordValid) {
+                val checkUsernameCall = RetrofitHelper.signInService.signIn()
+                checkUsernameCall.enqueue(object : Callback<List<LoginResponse>> {
+                    override fun onResponse(
+                        call: Call<List<LoginResponse>>,
+                        response: Response<List<LoginResponse>>
+                    ) {
+                        if (response.isSuccessful) {
+                            val userList = response.body()
+                            val isUsernameExist = userList?.any { it.userName == userName }
 
-        if (isFullNameValid && isUsernameValid && isPasswordValid) {
-            val request = SignUpRequest(fullName, userName, password)
+                            if (isUsernameExist == true) {
+                                showToast(getString(R.string.username_already))
+                            } else {
+                                proceedWithSignUp(fullName, userName, password)
+                            }
+                        }
+                    }
 
-            val call = RetrofitHelper.signUpService.signUp(request)
-            call.enqueue(object : Callback<SignUpRequest> {
-                override fun onResponse(call: Call<SignUpRequest>, response: Response<SignUpRequest>) {
+                    override fun onFailure(call: Call<List<LoginResponse>>, t: Throwable) {
+                    }
+                })
+            }
+        }
+
+
+    private fun proceedWithSignUp(fullName: String, userName: String, password: String) {
+        val request = SignUpRequest(fullName, userName, password)
+        val call = RetrofitHelper.signUpService.signUp(request)
+        call.enqueue(object : Callback<SignUpRequest> {
+            override fun onResponse(call: Call<SignUpRequest>, response: Response<SignUpRequest>) {
+                if (response.isSuccessful) {
                     isFullNameValid = false
                     isUsernameValid = false
                     isPasswordValid = false
                 }
+            }
 
-                override fun onFailure(call: Call<SignUpRequest>, t: Throwable) {
-                }
-            })
-            clearEditTextFields()
-        }
+            override fun onFailure(call: Call<SignUpRequest>, t: Throwable) {
+            }
+        })
+        showToast(getString(R.string.register_successful))
+        clearEditTextFields()
     }
 
+
     private fun updateButtonState() {
-        binding.btnLogin.isEnabled = isFullNameValid && isUsernameValid && isPasswordValid
+        binding.btnSubmit.isEnabled = isFullNameValid && isUsernameValid && isPasswordValid
     }
 
     private fun clearEditTextFields() {
@@ -167,5 +205,9 @@ class SignUpActivity : AppCompatActivity() {
         binding.edtFullname.error = null
         binding.edtUsername.error = null
         binding.edtPassword.error = null
+    }
+
+    fun showToast(error: String){
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
     }
 }
