@@ -24,6 +24,7 @@ class SignUpActivity : AppCompatActivity() {
     private var isUsernameValid = false
     private var isPasswordValid = false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -33,6 +34,9 @@ class SignUpActivity : AppCompatActivity() {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnSubmit.isEnabled = true
+
 
         binding.btnSubmit.setOnClickListener {
             val fullName = binding.edtFullname.text.toString()
