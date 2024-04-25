@@ -35,7 +35,6 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnSubmit.isEnabled = true
 
 
         binding.btnSubmit.setOnClickListener {
