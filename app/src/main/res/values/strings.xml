@@ -38,7 +38,7 @@
     <string name="roll_royce">Roll Royce Ghost</string>
     <string name="exciter">Exciter</string>
     <string name="all">All</string>
-    <string name="transition">Transition</string>
+    <string name="car_type">Car Type</string>
     <string name="automatic">Automatic</string>
     <string name="seats">Seats</string>
     <string name="render">RENDER</string>
