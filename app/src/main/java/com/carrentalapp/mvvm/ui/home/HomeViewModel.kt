@@ -13,6 +13,7 @@ import retrofit2.Response
 class HomeViewModel : ViewModel(){
 
     private val carsListLiveData = MutableLiveData<List<CarsList>>()
+    private val carsListCategoryLiveData = MutableLiveData<List<CarsList>>()
 
 
     fun loadCars() {
@@ -29,6 +30,27 @@ class HomeViewModel : ViewModel(){
 
     fun observerCarsListLiveData() : LiveData<List<CarsList>> {
         return carsListLiveData
+    }
+
+    fun loadCarsCategory(categoryId: String) {
+        RetrofitHelper.carsCategoryService.loadCarsCategory("eq.$categoryId")
+            .enqueue(object : Callback<List<CarsList>> {
+                override fun onResponse(
+                    call: Call<List<CarsList>>,
+                    response: Response<List<CarsList>>
+                ) {
+                    response.body()?.let { carsLists ->
+                        carsListCategoryLiveData.postValue(carsLists)
+                    }
+                }
+
+                override fun onFailure(call: Call<List<CarsList>>, t: Throwable) {
+                }
+            })
+    }
+
+    fun observerCarsCategoryLiveData(): LiveData<List<CarsList>> {
+        return carsListCategoryLiveData
     }
 }
 
