@@ -33,7 +33,7 @@ class CarsListAdapter : RecyclerView.Adapter<CarsListAdapter.ViewHolder>() {
         Glide.with(holder.itemView).load(carsList[position].picture).into(holder.binding.imgCar)
 
         holder.itemView.setOnClickListener {
-            itemClickCars!!.invoke(carsList[position] )
+            itemClickCars?.invoke(carsList[position] )
         }
     }
 
