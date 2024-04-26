@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
 import com.carrentalapp.mvvm.MainActivity
 import com.carrentalapp.mvvm.R
 import com.carrentalapp.mvvm.data.datasource.RetrofitHelper.signInService
@@ -34,19 +35,32 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun clickLogin() {
-        if (mListUser.isEmpty()) {
+        val username = binding.edtUsername.text.toString().trim()
+        val password = binding.edtPassword.text.toString().trim()
+
+        if (username.isBlank() || password.isBlank()) {
+            showToast(getString(R.string.is_empty))
             return
         }
 
         var isHasUser = false
+        var usernameExists = false
+
         for (user in mListUser) {
-            if ((binding.edtUsername.text.toString() == user.userName) && (binding.edtPassword.text.toString() == user.password)
-            ) {
-                isHasUser = true
-                break
+            if (username == user.userName) {
+                usernameExists = true
+                if (password == user.password) {
+                    isHasUser = true
+                    break
+                }
             }
         }
-        if (isHasUser) {
+
+        if (!usernameExists) {
+            showToast(getString(R.string.username_exist))
+        } else if (!isHasUser) {
+            showToast(getString(R.string.password_wrong))
+        } else {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -65,7 +79,6 @@ class SignInActivity : AppCompatActivity() {
                         }
                     }
                 }
-
                 override fun onFailure(call: Call<List<LoginResponse>>, t: Throwable) {
                 }
             }
@@ -137,5 +150,8 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+    private fun showToast(error: String){
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
     }
 }
