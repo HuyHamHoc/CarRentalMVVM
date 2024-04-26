@@ -27,6 +27,7 @@
                     tools:ignore="ImageContrastCheck" />
 
                 <ImageView
+                    android:id="@+id/btnBackHome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
@@ -38,7 +39,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="320dp"
+                    android:layout_marginStart="340dp"
                     android:layout_marginTop="57dp"
                     android:importantForAccessibility="no"
                     android:src="@drawable/ic_menu_horizontal"
@@ -66,16 +67,29 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:textColor="@color/dark_salmon"
                         android:id="@+id/tvPriceDay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="50dp"
+                        android:layout_marginEnd="90dp"
                         android:fontFamily="@font/ptsans_regular"
+                        android:textColor="@color/dark_salmon"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDayDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="60dp"
+                        android:fontFamily="@font/ptsans_regular"
+                        android:text="@string/day"
+                        android:textColor="@color/light_grayish_red"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextContrastCheck" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
@@ -110,7 +124,7 @@
                                 android:layout_marginBottom="50dp"
                                 android:fontFamily="@font/ptsans_regular"
                                 android:gravity="center"
-                                android:text="@string/transition"
+                                android:text="@string/car_type"
                                 android:textColor="@color/light_blue"
                                 tools:ignore="TextContrastCheck" />
 
@@ -198,8 +212,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="21dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_chat"
-                    android:importantForAccessibility="no" />
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_chat" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -213,16 +227,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="120dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_message"
-                    android:importantForAccessibility="no" />
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_message" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="21dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_phone"
-                    android:importantForAccessibility="no" />
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_phone" />
             </LinearLayout>
 
             <LinearLayout

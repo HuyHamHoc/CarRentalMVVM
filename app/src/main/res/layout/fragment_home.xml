@@ -42,89 +42,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/ln2"
-        android:layout_width="match_parent"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategory"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            tools:ignore="MissingConstraints,UselessParent">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:scrollbars="none">
-
-                <TextView
-                    android:id="@+id/tvCateAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_dark_salmon_outside"
-                    android:fontFamily="@font/ptsans_regular"
-                    android:padding="8dp"
-                    android:text="@string/all"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tvCate1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:background="@drawable/bg_dark_salmon_outside"
-                    android:fontFamily="@font/ptsans_regular"
-                    android:padding="8dp"
-                    android:text="@string/ferrari"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tvCate2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:background="@drawable/bg_dark_salmon_outside"
-                    android:fontFamily="@font/ptsans_regular"
-                    android:padding="8dp"
-                    android:text="@string/lamborghini"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tvCate3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:background="@drawable/bg_dark_salmon_outside"
-                    android:fontFamily="@font/ptsans_regular"
-                    android:padding="8dp"
-                    android:text="@string/roll_royce"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tvCate4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:background="@drawable/bg_dark_salmon_outside"
-                    android:fontFamily="@font/ptsans_regular"
-                    android:padding="8dp"
-                    android:text="@string/exciter"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-            </LinearLayout>
-        </HorizontalScrollView>
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/btnSearch"
@@ -134,20 +61,20 @@
         android:importantForAccessibility="no"
         android:src="@drawable/ic_search"
         app:layout_constraintBottom_toBottomOf="@+id/tvNearYou"
-        app:layout_constraintEnd_toEndOf="parent"
-      />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/tvNearYou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="28dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/cars_available_near_you"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/ln2"
-        app:layout_constraintTop_toBottomOf="@+id/ln2"
+        app:layout_constraintTop_toBottomOf="@+id/rvCategory"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -168,12 +95,12 @@
         android:id="@+id/recyclerView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="400dp"
         android:layout_marginBottom="60dp"
         android:clipToPadding="false"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ln2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNearYou" />
 </androidx.constraintlayout.widget.ConstraintLayout>

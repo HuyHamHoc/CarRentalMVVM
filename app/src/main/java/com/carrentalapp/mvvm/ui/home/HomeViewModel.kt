@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.carrentalapp.mvvm.data.datasource.RetrofitHelper
 import com.carrentalapp.mvvm.data.model.CarsList
+import com.carrentalapp.mvvm.data.model.CategoryModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,6 +15,7 @@ class HomeViewModel : ViewModel(){
 
     private val carsListLiveData = MutableLiveData<List<CarsList>>()
     private val carsListCategoryLiveData = MutableLiveData<List<CarsList>>()
+    private val carsListCategoryGetLiveData = MutableLiveData<List<CategoryModel>>()
 
 
     fun loadCars() {
@@ -51,6 +53,28 @@ class HomeViewModel : ViewModel(){
 
     fun observerCarsCategoryLiveData(): LiveData<List<CarsList>> {
         return carsListCategoryLiveData
+    }
+
+
+    fun loadCarsCategoryList() {
+        RetrofitHelper.carsCategoryService.loadCarsCategoryList()
+            .enqueue(object : Callback<List<CategoryModel>> {
+                override fun onResponse(
+                    call: Call<List<CategoryModel>>,
+                    response: Response<List<CategoryModel>>
+                ) {
+                    response.body()?.let { categoryLists ->
+                        carsListCategoryGetLiveData.postValue(categoryLists)
+                    }
+                }
+
+                override fun onFailure(call: Call<List<CategoryModel>>, t: Throwable) {
+                }
+            })
+    }
+
+    fun carsListCategoryGetLiveData(): LiveData<List<CategoryModel>> {
+        return carsListCategoryGetLiveData
     }
 }
 
