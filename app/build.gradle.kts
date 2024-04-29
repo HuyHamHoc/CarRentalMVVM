@@ -78,4 +78,8 @@ dependencies {
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     // glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    //google
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+    implementation ("com.google.android.gms:play-services-location:21.2.0")
+    implementation ("com.google.android.libraries.places:places:3.4.0")
 }
