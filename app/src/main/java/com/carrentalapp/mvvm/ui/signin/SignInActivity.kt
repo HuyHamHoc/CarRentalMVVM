@@ -1,5 +1,6 @@
 package com.carrentalapp.mvvm.ui.signin
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -61,8 +62,14 @@ class SignInActivity : AppCompatActivity() {
         } else if (!isHasUser) {
             showToast(getString(R.string.password_wrong))
         } else {
+            val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("isLoggedIn", true)
+            editor.apply()
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
