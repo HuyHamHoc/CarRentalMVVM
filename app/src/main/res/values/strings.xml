@@ -67,6 +67,9 @@
     <string name="notification">Notification</string>
     <string name="privacy">Privacy</string>
     <string name="help_info">Help &amp; Info</string>
-
+    <string name="please_name_car">Please enter vehicle name</string>
+    <string name="trending">TRENDING</string>
+    <string name="cars">Cars</string>
+    <string name="search">Search</string>
 
 </resources>
