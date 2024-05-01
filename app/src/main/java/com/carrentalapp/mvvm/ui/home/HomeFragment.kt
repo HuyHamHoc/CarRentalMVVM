@@ -16,6 +16,7 @@ import com.carrentalapp.mvvm.data.model.CarsList
 import com.carrentalapp.mvvm.data.model.CategoryModel
 import com.carrentalapp.mvvm.databinding.FragmentHomeBinding
 import com.carrentalapp.mvvm.ui.detail.DetailActivity
+import com.carrentalapp.mvvm.ui.search.SearchActivity
 
 
 class HomeFragment : Fragment() {
@@ -42,6 +43,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        binding.btnSearch.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+        }
 
         viewModel.loadCars()
         viewModel.loadCarsCategoryList()

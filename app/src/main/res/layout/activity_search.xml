@@ -6,87 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
+            android:id="@+id/ln1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:id="@+id/ln1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="50dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/btnReturn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_down_left" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="280dp"
-                    android:src="@drawable/ic_shopping_cart" />
-            </LinearLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="210dp"
-                android:layout_marginTop="40dp">
-
-                <EditText
-                    android:layout_width="160dp"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/roboto_medium"
-                    android:hint="Search"
-                    android:inputType="text"
-                    android:maxLength="15"
-                    android:textSize="13sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="140dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_search_cars" />
-            </FrameLayout>
-
-            <TextView
+            <ImageView
+                android:id="@+id/btnReturn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="49dp"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="TRENDING"
-                android:textColor="@color/dark_teal"
-                android:textSize="12sp" />
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_arrow_down_left" />
 
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="49dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="280dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_shopping_cart" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="40dp">
+
+            <EditText
+                android:id="@+id/edtSearch"
+                android:layout_width="235dp"
+                android:layout_height="50dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Cars"
-                android:textColor="@color/light_blue"
+                android:hint="@string/search"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLength="20"
                 android:textSize="15sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:clipToPadding="false"
-                android:padding="8dp" />
-        </LinearLayout>
-    </ScrollView>
+            <ImageView
+                android:id="@+id/btnSearchCars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="10dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_search_cars" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/trending"
+            android:textColor="@color/dark_teal"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/cars"
+            android:textColor="#78909C"
+            android:textSize="15sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:clipToPadding="false"
+            android:padding="8dp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
