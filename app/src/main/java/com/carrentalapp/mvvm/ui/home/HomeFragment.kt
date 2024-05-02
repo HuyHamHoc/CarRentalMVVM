@@ -56,6 +56,7 @@ class HomeFragment : Fragment() {
 
     private fun onClickDetailCars() {
         adapterCarsList.itemClickCars = { cars ->
+            binding.prgBar.visibility = View.GONE
             val intent = Intent(context, DetailActivity::class.java).apply {
                 putExtra("yourKey", cars.id)
             }
@@ -64,6 +65,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun observerLiveData() {
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                binding.prgBar.visibility = View.VISIBLE
+            } else {
+                binding.prgBar.visibility = View.GONE
+            }
+        }
         viewModel.observerCarsListLiveData().observe(viewLifecycleOwner) { carsLists ->
                 adapterCarsList.setDataCars(carsLists as ArrayList<CarsList>)
         }

@@ -60,7 +60,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
         mMap.setOnMarkerClickListener(this)
         mMap.setOnMapClickListener { latLng ->
             confirmLocationAndNavigateToBooking(latLng)
-            mMap.addMarker(MarkerOptions().position(latLng).title("Chọn vị trí này"))
+            mMap.addMarker(MarkerOptions().position(latLng).title("Select this location"))
             isLocationConfirmed = true
         }
         setupMap()
