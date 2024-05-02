@@ -3,6 +3,7 @@ package com.carrentalapp.mvvm.ui.search
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -38,6 +39,14 @@ class SearchActivity : AppCompatActivity() {
 
         binding.btnSearchCars.setOnClickListener {
             onSearchButtonClicked()
+        }
+
+        viewModel.isLoading.observe(this) { isLoading ->
+            if (isLoading) {
+                binding.prgBar.visibility = View.VISIBLE
+            } else {
+                binding.prgBar.visibility = View.GONE
+            }
         }
     }
 

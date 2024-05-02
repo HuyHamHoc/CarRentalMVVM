@@ -20,4 +20,6 @@
     <color name="lime_green">#6AC649</color>
     <color name="dark_gray">#676767</color>
     <color name="gray_light">#6B6B6B</color>
+    <color name="light_grey">#A1A1A1</color>
+
 </resources>

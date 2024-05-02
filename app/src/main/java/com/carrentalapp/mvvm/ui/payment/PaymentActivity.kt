@@ -8,6 +8,7 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -98,7 +99,9 @@ class PaymentActivity : AppCompatActivity() {
 
         intent.getStringExtra("carId")?.let { id ->
             viewModel.loadCarsDetail(id)
+            binding.prgBar.visibility = View.VISIBLE
             viewModel.observerCarsDetailLiveData().observe(this) { carsList ->
+                binding.prgBar.visibility = View.GONE
                 carsList?.firstOrNull()?.let { detail ->
                     with(binding) {
                         tvCarsNameBook.text = detail.name
@@ -208,12 +211,11 @@ class PaymentActivity : AppCompatActivity() {
 
     private fun createTransactionObject(): Transaction {
         val carId = intent.getStringExtra("carId") ?: ""
-        val quantity = binding.tvSelected.text.toString().toIntOrNull() ?: 0
-        val carPrice = ""
         val rentalDate = binding.tvStartDate.text.toString().parseDateToString()
         val returnDate = binding.tvEndDate.text.toString().parseDateToString()
-        val latitude = ""
-        val longitude = ""
+        val location = locationViewModel.getLocation()
+        val latitude = location?.latitude.toString()
+        val longitude = location?.longitude.toString()
         val address = binding.tvLocation.text.toString()
         val totalPrice = calculateTotalPrice()
 

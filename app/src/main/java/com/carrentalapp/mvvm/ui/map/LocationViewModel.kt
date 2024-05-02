@@ -12,4 +12,7 @@ class LocationViewModel : ViewModel() {
     fun setLocation(location: Location) {
         _location.value = location
     }
+    fun getLocation(): Location? {
+        return _location.value
+    }
 }
