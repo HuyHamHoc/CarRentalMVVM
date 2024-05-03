@@ -43,6 +43,8 @@
     <string name="select_location">Please select a location</string>
     <string name="select_start_end_date">Please select a start and end date</string>
     <string name="select_quantity">Please select quantity</string>
+    <string name="end_date_after_start_day">The end date is after the start date, please select again</string>
+    <string name="amount_is_invalid">Book car amount is invalid</string>
     <string name="start">Start</string>
     <string name="date">Date</string>
     <string name="end">End</string>
@@ -67,7 +69,7 @@
     <string name="notification">Notification</string>
     <string name="privacy">Privacy</string>
     <string name="help_info">Help &amp; Info</string>
-    <string name="please_name_car">Please enter vehicle name</string>
+    <string name="please_name_car">Please enter car name</string>
     <string name="trending">TRENDING</string>
     <string name="cars">Cars</string>
     <string name="search">Search</string>

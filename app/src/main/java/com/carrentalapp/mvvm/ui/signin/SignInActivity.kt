@@ -46,11 +46,13 @@ class SignInActivity : AppCompatActivity() {
 
         var isHasUser = false
         var usernameExists = false
+        var customer: LoginResponse? = null
 
         for (user in mListUser) {
             if (username == user.userName) {
                 usernameExists = true
                 if (password == user.password) {
+                    customer = user
                     isHasUser = true
                     break
                 }
@@ -65,6 +67,8 @@ class SignInActivity : AppCompatActivity() {
             val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putBoolean("isLoggedIn", true)
+            editor.putString("customerId", customer?.id)
+            editor.putString("fullName", customer?.fullName)
             editor.apply()
 
             val intent = Intent(this, MainActivity::class.java)

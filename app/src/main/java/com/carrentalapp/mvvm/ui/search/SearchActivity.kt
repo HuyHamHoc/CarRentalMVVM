@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.carrentalapp.mvvm.R
 import com.carrentalapp.mvvm.adapter.CarsListAdapter
-import com.carrentalapp.mvvm.data.model.CarsList
 import com.carrentalapp.mvvm.databinding.ActivitySearchBinding
 import com.carrentalapp.mvvm.ui.detail.DetailActivity
 import com.carrentalapp.mvvm.ui.home.HomeViewModel
@@ -35,7 +34,7 @@ class SearchActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        viewModel.loadCarsCategoryList()
+        viewModel.loadCars()
 
         binding.btnSearchCars.setOnClickListener {
             onSearchButtonClicked()
@@ -61,18 +60,9 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun searchCars(query: String) {
-        val carsLists = ArrayList<CarsList>()
-
-        viewModel.carsListCategoryGetLiveData().observe(this) { categoryLists ->
-            if (categoryLists.isNotEmpty()) {
-                categoryLists.forEach { category ->
-                    viewModel.loadCarsCategory(category.id)
-                }
-            }
-        }
-        viewModel.observerCarsCategoryLiveData().observe(this) { cars ->
-            carsLists.addAll(cars.filter { it.name.contains(query, true) })
-            carsAdapter.setDataCars(ArrayList(carsLists))
+        viewModel.observerCarsListLiveData().observe(this) { cars ->
+            val listCarsSearch = cars.filter { it.name.contains(query, true) }
+            carsAdapter.setDataCars(ArrayList(listCarsSearch))
         }
     }
     private fun setupRecyclerView() {

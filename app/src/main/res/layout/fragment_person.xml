@@ -24,26 +24,6 @@
             android:layout_marginTop="80dp"
             android:src="@drawable/avatar_person"
             android:importantForAccessibility="no" />
-
-        <ImageView
-            android:id="@+id/btnBackHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="50dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_next"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="340dp"
-            android:layout_marginTop="50dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_menu_horizontal"
-            tools:ignore="ImageContrastCheck" />
-
         <TextView
             android:id="@+id/tvPersonName"
             android:layout_width="wrap_content"
