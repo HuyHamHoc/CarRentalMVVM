@@ -11,26 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/tvBackDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/ic_outline_navigate_next"
-            android:importantForAccessibility="no" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/ic_menu_horizontal_dark_teal"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:importantForAccessibility="no" />
-    </LinearLayout>
+        tools:ignore="MissingConstraints"></LinearLayout>
 
 
     <ImageView
@@ -61,12 +42,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:importantForAccessibility="no"
         android:src="@drawable/ic_thank_you"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:ignore="ImageContrastCheck"
-        android:importantForAccessibility="no" />
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/textView7"
@@ -113,7 +94,6 @@
         tools:ignore="TextSizeCheck" />
 
     <TextView
-        android:textColor="@color/dark_teal"
         android:id="@+id/textView12"
         android:layout_width="349dp"
         android:layout_height="55dp"
@@ -124,16 +104,17 @@
         android:paddingBottom="14dp"
         android:text="@string/track"
         android:textAlignment="center"
+        android:textColor="@color/dark_teal"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
-        android:layout_marginTop="30dp"
-        android:id="@+id/btnConfirm"
+        android:id="@+id/btnGoBack"
         android:layout_width="349dp"
         android:layout_height="55dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/bg_dark_teal_button"
         android:fontFamily="@font/inter_medium"

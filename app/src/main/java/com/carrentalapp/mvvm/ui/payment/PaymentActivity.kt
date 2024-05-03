@@ -2,6 +2,7 @@ package com.carrentalapp.mvvm.ui.payment
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.icu.util.Calendar
 import android.location.Geocoder
@@ -51,23 +52,42 @@ class PaymentActivity : AppCompatActivity() {
             val startDate = binding.tvStartDate.text.toString()
             val endDate = binding.tvEndDate.text.toString()
 
+            // Kiểm tra xem ngày bắt đầu và ngày kết thúc có đúng định dạng "dd/MM/yyyy" không
             val datePattern = Constants.DATE_FORMAT_REGEX
             val isValidStartDate = startDate.matches(datePattern)
             val isValidEndDate = endDate.matches(datePattern)
 
+            // Kiểm tra xem người dùng đã chọn vị trí hay không
             val selectedLocation = binding.tvLocation.text.toString()
             val hasSelectedLocation = selectedLocation.isNotEmpty()
 
-            if (!isValidStartDate || !isValidEndDate) {
-                showToast(getString(R.string.select_start_end_date))
-            } else if (startDate == endDate) {
-                showToast(getString(R.string.start_end_date_same))
-            } else if (!hasSelectedLocation) {
+            if ((!isValidStartDate || !isValidEndDate) && !hasSelectedLocation) {
+                showToast(getString(R.string.select_date_and_location))
+                return@setOnClickListener
+            } else if (!hasSelectedLocation && (isValidStartDate || isValidEndDate)) {
                 showToast(getString(R.string.select_location))
-            } else {
+                return@setOnClickListener
+            } else if (hasSelectedLocation && (!isValidStartDate || !isValidEndDate)) {
+                showToast(getString(R.string.select_start_end_date))
+                return@setOnClickListener
+            } else if (hasSelectedLocation && isValidStartDate && isValidEndDate) {
+                // Kiểm tra xem ngày kết thúc có lớn hơn ngày bắt đầu không
+                val startDateMillis = startDate.parseDateInMillis()
+                val endDateMillis = endDate.parseDateInMillis()
+                if (endDateMillis <= startDateMillis) {
+                    showToast(getString(R.string.end_date_after_start_day))
+                    return@setOnClickListener
+                }
+
+                // Tạo đối tượng Transaction từ dữ liệu hiện tại của đơn đặt hàng
                 val transaction = createTransactionObject()
+                // Gọi phương thức carsTransaction và truyền đối tượng Transaction vào
                 paymentViewModel.carsTransaction(transaction)
                 val totalPrice = calculateTotalPrice()
+                if (totalPrice < BigDecimal.ZERO) {
+                   showToast(getString(R.string.amount_is_invalid))
+                    return@setOnClickListener
+                }
                 val intent = Intent(this@PaymentActivity, PaymentMadeActivity::class.java)
                 intent.putExtra("totalPrice", totalPrice.toString())
                 startActivity(intent)
@@ -78,7 +98,6 @@ class PaymentActivity : AppCompatActivity() {
             val currentLatLong = LatLng(location.latitude, location.longitude)
             placeMarkerOnMap(currentLatLong)
         }
-
 
         binding.icLocation.setOnClickListener {
             val mapFragment = MapFragment()
@@ -136,6 +155,20 @@ class PaymentActivity : AppCompatActivity() {
             showDatePicker(false)
         }
     }
+    private fun String.parseDateInMillis(): Long {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        return try {
+            dateFormat.parse(this)?.time ?: 0
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            0
+        }
+    }
+    private fun getCustomerId(): String? {
+        // Nhận customerId từ Intent
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("customerId", "")
+    }
 
     private fun placeMarkerOnMap(currentLatLong: LatLng) {
         val geocoder = Geocoder(this, Locale.getDefault())
@@ -182,12 +215,11 @@ class PaymentActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun calculateTotalPrice(): BigDecimal {
         val numberOfDays = binding.tvDays.text.toString().toIntOrNull() ?: 0
-        val carPriceBigDecimal = BigDecimal(carPrice)
-        val totalPricePerDay = BigDecimal(100)
-        val totalPriceWithoutDriver = carPriceBigDecimal.multiply(BigDecimal(quantity)).add(totalPricePerDay.multiply(
-            BigDecimal(numberOfDays)
-        ))
-        val driversFee = if (needsDriver) BigDecimal(50) else BigDecimal.ZERO
+        val carPricePerCar = BigDecimal(carPrice) // Giá tiền cho mỗi chiếc xe
+        val totalPricePerCar = carPricePerCar.multiply(BigDecimal(quantity))
+        val totalPricePerDay = carPricePerCar // Giá tiền cho mỗi ngày thuê là giá của một chiếc xe
+        val totalPriceWithoutDriver = totalPricePerCar.add(totalPricePerDay.multiply(BigDecimal(numberOfDays)))
+        val driversFee = if (needsDriver) BigDecimal(50) else BigDecimal.ZERO // Phí tài xế
         val totalPrice = totalPriceWithoutDriver.add(driversFee)
         binding.tvPriceBook.text = "$$totalPriceWithoutDriver"
         binding.tvTotal.text = "$$totalPrice"
@@ -211,6 +243,7 @@ class PaymentActivity : AppCompatActivity() {
 
     private fun createTransactionObject(): Transaction {
         val carId = intent.getStringExtra("carId") ?: ""
+        val customerId = getCustomerId() ?: ""
         val rentalDate = binding.tvStartDate.text.toString().parseDateToString()
         val returnDate = binding.tvEndDate.text.toString().parseDateToString()
         val location = locationViewModel.getLocation()
@@ -220,7 +253,7 @@ class PaymentActivity : AppCompatActivity() {
         val totalPrice = calculateTotalPrice()
 
         return Transaction(
-            customerId = "",
+            customerId = customerId,
             carId = carId,
             rentalDate = rentalDate,
             returnDate = returnDate,

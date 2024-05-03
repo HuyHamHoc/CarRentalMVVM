@@ -17,15 +17,23 @@ class PersonFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Inflate the layout for this fragment
         binding = FragmentPersonBinding.inflate(inflater, container, false)
         val view = binding.root
-        val fullName = requireActivity().intent.getStringExtra("fullName")
-        binding.tvPersonName.text = fullName
+
+        binding.tvPersonName.text = getFullName()
+
         binding.btnLogout.setOnClickListener {
             logout()
         }
         return view
     }
+
+    private fun getFullName(): String? {
+        val sharedPreferences = activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        return sharedPreferences?.getString("fullName", "")
+    }
+
 
     private fun logout() {
         val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
