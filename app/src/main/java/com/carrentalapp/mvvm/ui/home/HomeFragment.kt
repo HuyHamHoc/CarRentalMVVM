@@ -99,6 +99,7 @@ class HomeFragment : Fragment() {
         }
 
         adapterCategoryList = CarsCategoryAdapter()
+        adapterCategoryList.setSelectedPosition(0)
         binding.rvCategory.apply {
             setHasFixedSize(true)
             val layoutManager = LinearLayoutManager(context)

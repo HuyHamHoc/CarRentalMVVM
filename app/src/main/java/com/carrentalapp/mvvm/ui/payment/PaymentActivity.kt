@@ -188,11 +188,17 @@ class PaymentActivity : AppCompatActivity() {
                 if (isStartDate) {
                     binding.tvStartDate.text = formattedDate
                 } else {
+                    val startDate = binding.tvStartDate.text.toString().parseDate()
+                    val endDate = selectedDate.timeInMillis
+
+                    if (endDate <= startDate) {
+                        showToast(getString(R.string.end_date_after_start_day))
+                        return@DatePickerDialog
+                    }
+
                     binding.tvEndDate.text = formattedDate
-                    val startDate = binding.tvStartDate.text.toString()
-                    val endDate = binding.tvEndDate.text.toString()
-                    val startDateTime = startDate.parseDate()
-                    val endDateTime = endDate.parseDate()
+                    val startDateTime = startDate
+                    val endDateTime = endDate
                     val diffInMillis = endDateTime - startDateTime
                     val diffInDays = TimeUnit.MILLISECONDS.toDays(diffInMillis)
                     binding.tvDays.text = diffInDays.toString()
@@ -203,10 +209,15 @@ class PaymentActivity : AppCompatActivity() {
             selectedDate.get(Calendar.MONTH),
             selectedDate.get(Calendar.DAY_OF_MONTH)
         )
+
+        if (!isStartDate) {
+            val startDate = binding.tvStartDate.text.toString().parseDate()
+            datePickerDialog.datePicker.minDate = startDate
+        }
+
         datePickerDialog.datePicker.minDate = Calendar.getInstance().timeInMillis
         datePickerDialog.show()
     }
-
     private fun updateDriversFee() {
         binding.tvDriversFee.text = if (needsDriver) "$50" else ""
         calculateTotalPrice()
@@ -214,18 +225,35 @@ class PaymentActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun calculateTotalPrice(): BigDecimal {
-        val numberOfDays = binding.tvDays.text.toString().toIntOrNull() ?: 0
-        val carPricePerCar = BigDecimal(carPrice) // Giá tiền cho mỗi chiếc xe
+        val startDate = binding.tvStartDate.text.toString()
+        val endDate = binding.tvEndDate.text.toString()
+
+        val startDateTime = startDate.parseDate()
+        val endDateTime = endDate.parseDate()
+
+        var numberOfDays = TimeUnit.MILLISECONDS.toDays(endDateTime - startDateTime).toInt()
+
+        if (numberOfDays == 0 || startDateTime == endDateTime) {
+            numberOfDays = 1
+        } else {
+            numberOfDays += 1
+        }
+
+        binding.tvDays.text = numberOfDays.toString()
+
+        // Tiếp tục tính toán giá tiền dựa trên số ngày thuê và số lượng xe
+        val carPricePerCar = BigDecimal(carPrice)
         val totalPricePerCar = carPricePerCar.multiply(BigDecimal(quantity))
-        val totalPricePerDay = carPricePerCar // Giá tiền cho mỗi ngày thuê là giá của một chiếc xe
-        val totalPriceWithoutDriver = totalPricePerCar.add(totalPricePerDay.multiply(BigDecimal(numberOfDays)))
-        val driversFee = if (needsDriver) BigDecimal(50) else BigDecimal.ZERO // Phí tài xế
+        val totalPricePerDay = carPricePerCar
+        val totalPriceWithoutDriver = totalPricePerCar.multiply(BigDecimal(numberOfDays))
+        val driversFee = if (needsDriver) BigDecimal(50) else BigDecimal.ZERO
         val totalPrice = totalPriceWithoutDriver.add(driversFee)
+
         binding.tvPriceBook.text = "$$totalPriceWithoutDriver"
         binding.tvTotal.text = "$$totalPrice"
+
         return totalPrice
     }
-
     private fun Long.formatDate(): String {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         return dateFormat.format(this)
