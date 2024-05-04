@@ -56,4 +56,9 @@ class CarsCategoryAdapter : RecyclerView.Adapter<CarsCategoryAdapter.ViewHolder>
         this.carsList = cars
         notifyDataSetChanged()
     }
+    @SuppressLint("NotifyDataSetChanged")
+    fun setSelectedPosition(position: Int) {
+        selectedPosition = position
+        notifyDataSetChanged()
+    }
 }
