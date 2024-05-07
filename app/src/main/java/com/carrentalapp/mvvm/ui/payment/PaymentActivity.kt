@@ -89,6 +89,7 @@ class PaymentActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
                 val intent = Intent(this@PaymentActivity, PaymentMadeActivity::class.java)
+                intent.putExtra("selectedLocation", selectedLocation)
                 intent.putExtra("totalPrice", totalPrice.toString())
                 startActivity(intent)
             }
