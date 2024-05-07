@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.carrentalapp.mvvm.databinding.ActivityMainBinding
-import com.carrentalapp.mvvm.ui.favorite.FavoriteFragment
+import com.carrentalapp.mvvm.ui.favourite.FavouriteFragment
 import com.carrentalapp.mvvm.ui.home.HomeFragment
 import com.carrentalapp.mvvm.ui.notification.NotificationFragment
 import com.carrentalapp.mvvm.ui.person.PersonFragment
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.homeFragment -> replaceFragment(HomeFragment())
-                R.id.favoriteFragment -> replaceFragment(FavoriteFragment())
+                R.id.favoriteFragment -> replaceFragment(FavouriteFragment())
                 R.id.notificationFragment -> replaceFragment(NotificationFragment())
                 R.id.personFragment -> replaceFragment(PersonFragment())
             }

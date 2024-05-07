@@ -73,5 +73,7 @@
     <string name="trending">TRENDING</string>
     <string name="cars">Cars</string>
     <string name="search">Search</string>
+    <string name="my_favorites">My Favorites</string>
+    <string name="delete">Delete</string>
 
 </resources>

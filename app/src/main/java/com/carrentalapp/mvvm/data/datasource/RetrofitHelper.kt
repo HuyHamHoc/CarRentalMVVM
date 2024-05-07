@@ -2,6 +2,7 @@ package com.carrentalapp.mvvm.data.datasource
 
 import com.carrentalapp.mvvm.data.repository.ICarsCategoryService
 import com.carrentalapp.mvvm.data.repository.ICarsDetailService
+import com.carrentalapp.mvvm.data.repository.ICarsFavouriteService
 import com.carrentalapp.mvvm.data.repository.ICarsListService
 import com.carrentalapp.mvvm.data.repository.ICarsTransaction
 import com.carrentalapp.mvvm.data.repository.ISignInService
@@ -39,5 +40,8 @@ object RetrofitHelper {
     }
     val carsTransactionService: ICarsTransaction by lazy {
         retrofit.create(ICarsTransaction::class.java)
+    }
+    val carsFavouriteService: ICarsFavouriteService by lazy {
+        retrofit.create(ICarsFavouriteService::class.java)
     }
 }
