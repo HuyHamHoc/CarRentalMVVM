@@ -75,5 +75,13 @@
     <string name="search">Search</string>
     <string name="my_favorites">My Favorites</string>
     <string name="delete">Delete</string>
+    <string name="car_tracking">Car Tracking</string>
+    <string name="driver">Driver</string>
+    <string name="remaining_minutes">Remaining Minutes</string>
+    <string name="cancel">Cancel</string>
+    <string name="completed">Completed</string>
+    <string name="_15_sec">15 sec</string>
+    <string name="_15_min">15 min</string>
+    <string name="huy_v">HUY VÕ</string>
 
 </resources>

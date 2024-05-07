@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.carrentalapp.mvvm.MainActivity
 import com.carrentalapp.mvvm.databinding.ActivityPaymentMadeBinding
 import com.carrentalapp.mvvm.ui.payment.PaymentViewModel
+import com.carrentalapp.mvvm.ui.track_map.TrackMapActivity
 
 class PaymentMadeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentMadeBinding
@@ -27,6 +28,12 @@ class PaymentMadeActivity : AppCompatActivity() {
         binding.btnGoBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            startActivity(intent)
+        }
+        val selectedLocation = intent.getStringExtra("selectedLocation")
+        binding.btnTrack.setOnClickListener {
+            val intent = Intent(this@PaymentMadeActivity, TrackMapActivity::class.java)
+            intent.putExtra("selectedLocation",selectedLocation)
             startActivity(intent)
         }
     }
