@@ -74,7 +74,7 @@ class PaymentActivity : AppCompatActivity() {
                 // Kiểm tra xem ngày kết thúc có lớn hơn ngày bắt đầu không
                 val startDateMillis = startDate.parseDateInMillis()
                 val endDateMillis = endDate.parseDateInMillis()
-                if (endDateMillis <= startDateMillis) {
+                if (endDateMillis < startDateMillis) {
                     showToast(getString(R.string.end_date_after_start_day))
                     return@setOnClickListener
                 }
