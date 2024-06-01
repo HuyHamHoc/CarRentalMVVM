@@ -127,14 +127,44 @@
                 app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
             <TextView
+                android:layout_marginTop="10dp"
+                android:id="@id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/or"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>
+
+            <TextView
+                android:drawableStart="@drawable/ic_gg"
+                android:id="@+id/btnGoogle"
+                android:layout_width="349dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_dark_salmon_outside"
+                android:fontFamily="@font/inter_medium"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:text="@string/continue_with_google"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:ignore="UseCompatTextViewDrawableXml" />
+
+
+            <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/don_t_have_an_account_yet"
-                app:layout_constraintStart_toStartOf="@+id/btnLogin"
-                app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+                app:layout_constraintStart_toStartOf="@+id/btnGoogle"
+                app:layout_constraintTop_toBottomOf="@+id/btnGoogle"
                 tools:ignore="TextSizeCheck" />
 
             <TextView

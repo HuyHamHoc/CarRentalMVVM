@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "909729442915",
+    "project_id": "carrentalmvvm",
+    "storage_bucket": "carrentalmvvm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909729442915:android:4cb0371cf7a3580c611c56",
+        "android_client_info": {
+          "package_name": "com.carrentalapp.mvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909729442915-tjd0nsp944gsi8b1llhe1ciq1otfgnr6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carrentalapp.mvvm",
+            "certificate_hash": "26a4cd0527c03f21af69f6ac68a688eee6fcf608"
+          }
+        },
+        {
+          "client_id": "909729442915-dsj4o20us49ufo04jccnfu6pkd2tqu1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeu24Hc7FN8Dg_m_Tc_g6oJX_jOtpzvx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909729442915-dsj4o20us49ufo04jccnfu6pkd2tqu1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
