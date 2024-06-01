@@ -83,5 +83,7 @@
     <string name="_15_sec">15 sec</string>
     <string name="_15_min">15 min</string>
     <string name="huy_v">HUY VÕ</string>
-
+    <string name="continue_with_google">Continue With Google</string>
+    <string name="or">OR</string>
+    <string name="default_web_client_id">909729442915-dsj4o20us49ufo04jccnfu6pkd2tqu1g.apps.googleusercontent.com</string>
 </resources>
