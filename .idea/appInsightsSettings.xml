@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.carrentalapp.mvvm" />
+                  <option name="mobileSdkAppId" value="1:909729442915:android:4cb0371cf7a3580c611c56" />
+                  <option name="projectId" value="carrentalmvvm" />
+                  <option name="projectNumber" value="909729442915" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.carrentalapp.mvvm.databinding.ActivityMainBinding
 import com.carrentalapp.mvvm.ui.favourite.FavouriteFragment
 import com.carrentalapp.mvvm.ui.home.HomeFragment
-import com.carrentalapp.mvvm.ui.notification.NotificationFragment
+import com.carrentalapp.mvvm.ui.booking.BookingFragment
 import com.carrentalapp.mvvm.ui.person.PersonFragment
 
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.homeFragment -> replaceFragment(HomeFragment())
                 R.id.favoriteFragment -> replaceFragment(FavouriteFragment())
-                R.id.notificationFragment -> replaceFragment(NotificationFragment())
+                R.id.notificationFragment -> replaceFragment(BookingFragment())
                 R.id.personFragment -> replaceFragment(PersonFragment())
             }
             true

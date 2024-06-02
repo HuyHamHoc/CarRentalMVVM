@@ -10,9 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PaymentViewModel : ViewModel() {
-    private val _carsTransactionLiveData = MutableLiveData<List<Transaction>>()
-    val carsTransactionLiveData: LiveData<List<Transaction>> get() = _carsTransactionLiveData
-
+    private val carsTransactionLiveData = MutableLiveData<List<Transaction>>()
     fun carsTransaction(transaction: Transaction) {
         RetrofitHelper.carsTransactionService.transaction(transaction)
             .enqueue(object : Callback<List<Transaction>> {
@@ -23,7 +21,7 @@ class PaymentViewModel : ViewModel() {
                     if (response.isSuccessful) {
                         val transactions = response.body()
                         transactions?.let {
-                            _carsTransactionLiveData.postValue(it)
+                            carsTransactionLiveData.postValue(it)
                         }
                     }
                 }
@@ -31,5 +29,29 @@ class PaymentViewModel : ViewModel() {
                 override fun onFailure(call: Call<List<Transaction>>, t: Throwable) {
                 }
             })
+    }
+
+    fun getTransaction(customerId: String) {
+        RetrofitHelper.carsTransactionService.getTransaction("eq.$customerId")
+            .enqueue(object : Callback<List<Transaction>> {
+                override fun onResponse(
+                    call: Call<List<Transaction>>,
+                    response: Response<List<Transaction>>
+                ) {
+                    if (response.isSuccessful) {
+                        val transactions = response.body()
+                        transactions?.let {
+                            carsTransactionLiveData.postValue(it)
+
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Transaction>>, t: Throwable) {
+                }
+            })
+    }
+    fun observerCarsMyBookLiveData() : LiveData<List<Transaction>> {
+        return carsTransactionLiveData
     }
 }

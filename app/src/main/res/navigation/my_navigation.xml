@@ -19,7 +19,7 @@
         android:id="@+id/notificationFragment"
         android:name="com.carrentalapp.mvvm.ui.fragment.NotificationFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_booking" />
     <fragment
         android:id="@+id/personFragment"
         android:name="com.carrentalapp.mvvm.ui.fragment.PersonFragment"
